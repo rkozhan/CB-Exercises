@@ -4,7 +4,19 @@ import java.util.Scanner;
 
 public class E2_2_ArbeitsOderFreizeit {
     public static void main(String[] args) {
+        System.out.println("Gib die Zeit ein (z.B. 16:22)");
         Scanner sc = new Scanner(System.in);
+        String input = sc.nextLine();
+
+        String[] inputArr = input.split(":");
+        int time = Integer.parseInt(inputArr[0]) * 60 + Integer.parseInt(inputArr[1]);
+
+        if ( time >=  8*60 + 30 && time <= 15*60 + 30) System.out.println(input + " Uhr liegt in der Arbeitszeit");
+        else System.out.println(input + " Uhr liegt nicht in der Arbeitszeit");
+
+        if (time == 12*60) System.out.println("Es ist Mittag");
+        /*
+
         int hour, minute;
 
         do {
@@ -25,6 +37,8 @@ public class E2_2_ArbeitsOderFreizeit {
             System.out.printf("%02d:%02d Uhr liegt nicht in der Arbeitszeit", hour, minute);
 
         if (hour == 12 && minute == 0) System.out.println("Es ist Mittag");
+
+         */
     }
 }
 

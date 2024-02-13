@@ -10,11 +10,9 @@ public class E1_3_WorkingWithStrings {
         System.out.println(word.toUpperCase());
         System.out.println(word.toLowerCase());
         System.out.println(word.replace("World", "Codersbay"));
-        System.out.println(word.trim());
-
-        for (int i = 1; i <= 15; i++) {
-            System.out.println(word);
-        }
+        //System.out.println(word.trim());
+        System.out.println(word.stripLeading());
+        System.out.println((word + "\n").repeat(15));
     }
 }
 

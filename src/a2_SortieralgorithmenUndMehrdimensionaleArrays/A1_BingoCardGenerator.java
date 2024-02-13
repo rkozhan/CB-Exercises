@@ -30,7 +30,6 @@ public class A1_BingoCardGenerator {
                     else row.append("  ").append(num).append(" ");
                 }
             }
-            cardString.clear();
             System.out.println(row);
         }
     }

@@ -5,13 +5,14 @@ import java.util.Arrays;
 public class A3_MergeSort {
     public static void main(String[] args) {
         System.out.println(Arrays.toString(mergeSort(new int[]{14, 7, 3, 12, 9, 11, 6, 2})));
-        System.out.println(Arrays.toString(mergeSort(new int[]{3, 2, 5 , 7, 4})));
-        System.out.println(Arrays.toString(mergeSort(new int[]{8, 2, 4 , 1, 3})));
-        System.out.println(Arrays.toString(mergeSort(new int[]{5, 1, 8, 3, 9, 2})));
+        //System.out.println(Arrays.toString(mergeSort(new int[]{3, 2, 5 , 7, 4})));
+        //System.out.println(Arrays.toString(mergeSort(new int[]{8, 2, 4 , 1, 3})));
+        //System.out.println(Arrays.toString(mergeSort(new int[]{5, 1, 8, 3, 9, 2})));
     }
     static int[] mergeSort (int[] arr) {
 
         if (arr.length > 1) {
+            /*
             int[] left = new int[arr.length / 2];
             int[] right = new int[arr.length - arr.length / 2];
 
@@ -19,6 +20,9 @@ public class A3_MergeSort {
                 if (i < left.length) left[i] = arr[i];
                 else right[i - left.length] = arr[i];
             }
+            */
+            int[] left = Arrays.copyOfRange(arr, 0, arr.length / 2);
+            int[] right = Arrays.copyOfRange(arr, arr.length / 2, arr.length);
 
             mergeSort(left);
             mergeSort(right);

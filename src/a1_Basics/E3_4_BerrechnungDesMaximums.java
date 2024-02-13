@@ -23,7 +23,7 @@ public class E3_4_BerrechnungDesMaximums {
         if (nums.size() > 0) {
             System.out.println(nums);
 
-            int max = 0;
+            int max = Integer.MIN_VALUE;
             for (int i = 0; i < nums.size(); i++) {
                 if (nums.get(i) > max) {
                     max = nums.get(i);
