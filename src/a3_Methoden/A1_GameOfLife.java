@@ -12,7 +12,7 @@ public class A1_GameOfLife {
 
         for (int i = 0; i < field.length; i++) {
             for (int k = 0; k < field.length; k++) {
-                //field[k][i] = r.nextInt(5) == 0 ? true : false;   //density
+                field[k][i] = r.nextInt(5) == 0 ? true : false;   //density
             }
         }
         // ------------------------------------------map GLIDER
@@ -21,7 +21,7 @@ public class A1_GameOfLife {
         };
         for (int i = 0; i < glider.length; i++) {
             for (int j = 0; j < glider.length; j++) {
-                field[j][i] = glider[j][i];
+                //field[j][i] = glider[j][i];
             }
         }
 

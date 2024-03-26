@@ -1,6 +1,10 @@
 package a3_Methoden;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class a0_CodingBatCom {
+    //                                           https://codingbat.com/java/Recursion-1
     public static void main(String[] args) {
     }
     public int factorial(int n) {
@@ -187,6 +191,50 @@ public class a0_CodingBatCom {
 
         return str.length();
     }
+
+
+    // -------------------------- Rekursion 2
+    public boolean groupSum(int start, int[] nums, int target) {
+        if (start >= nums.length) return target == 0;
+
+        if (groupSum(start+1, nums, target-nums[start])) return true;
+
+        if (groupSum(start+1, nums, target)) return true;
+
+        return false;
+    }
+
+    public boolean groupSum6(int start, int[] nums, int target) {
+        if (start >= nums.length) return (target == 0);
+
+        if (nums[start] == 6) {
+            return groupSum6(start + 1, nums, target - 6);
+        }
+
+        return groupSum6(start + 1, nums, target) || groupSum6(start + 1, nums, target - nums[start]);
+    }
+
+    public boolean groupNoAdj(int start, int[] nums, int target) {
+        if (start >= nums.length) return (target == 0);
+
+        return groupNoAdj(start + 2, nums, target - nums[start]) ||
+                groupNoAdj(start + 1, nums, target);
+    }
+    public boolean groupSum5(int start, int[] nums, int target) {
+        if (start >= nums.length) return (target == 0);
+
+        if (nums[start] % 5 == 0) {
+            if (start < nums.length - 1 && nums[start + 1] == 1) {
+                return groupSum5(start + 2, nums, target - nums[start]);
+            }
+            return groupSum5(start + 1, nums, target - nums[start]);
+        }
+        return groupSum5(start + 1, nums, target - nums[start]) ||
+                groupSum5(start + 1, nums, target);
+    }
+
+
+
 
 
 

@@ -5,6 +5,8 @@ public class a0_RekursionChallenge1 {
         upToHundred(90);
         System.out.println();
         System.out.println(addNumbersRecursive(5));
+
+        showRecursion(5);
     }
     static void  upToHundred(int n) {
         if (n > 100) return;
@@ -31,6 +33,16 @@ public class a0_RekursionChallenge1 {
             return n % 10 == 7 ? 1 : 0;
         }
         return n % 10 == 7 ? 1 + count7(n / 10) : count7(n / 10);
+    }
+
+
+    public static void showRecursion(int n) {
+        if (n > 0) {
+            System.out.println(n);
+
+            showRecursion(--n);
+            System.out.println(n);
+        }
     }
 
 }
