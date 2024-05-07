@@ -85,3 +85,12 @@ class Tree {
     */
 
 }
+
+/*
+ArrayList Challenge 2
+1. Erstelle eine Klasse Namens „Tree“, welche einen int „leaves“ und einen int „id“ hat
+   Erstelle 100 „Tree“ – Objekte mit zufälliger Anzahl an „leaves“ und einzigertiger „id“
+   und speichere sie in einer Liste.
+2. Gib aus, wie viele Blätter insgesamt vorhanden sind.
+3. Gib aus, welcher Baum die meisten Blätter hat
+*/

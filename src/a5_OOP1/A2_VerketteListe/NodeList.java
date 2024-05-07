@@ -1,110 +1,84 @@
 package a5_OOP1.A2_VerketteListe;
 import java.util.LinkedList;
-public class NodeList {
-    static Node first;
-    public boolean add(String value) {
-        Node newNode = new Node(value);
-        if (first == null) {
-            first = newNode;
-        } else {
-            Node last = first;
-            while (last.next != null) {
-                last = last.next;
-            }
-            last.next = newNode;
-        }
-        return true;
-    }
-    public  void add(int index, String value) {
-        Node newNode = new Node(value);
-        int currentIndex = 0;
-        Node current = first;
-        if (index <= 0) {
-            newNode.next = first;
-            first = newNode;
-        } else {
-            /*
-            while (current.next != null) {
-                currentIndex++;
-                if (currentIndex == index) break;
-                current = current.next;
-            }
-            newNode.next = current.next;
-            current.next = newNode;
-             */
-
-            Node prev = index < this.size() ? this.get(index-1) : this.get(this.size()-1);
-            newNode.next = prev.next;
-            prev.next = newNode;
-        }
+public class NodeList<T> {
+    Node<T> first;
+    int length = 0;
+    int size() {
+        return length;
     }
 
-    public int size() {
-        if (first != null) {
-            int size = 1;
-            Node current = first;
-            while (current.next != null) {
-                current = current.next;
-                size++;
-            }
-            return size;
-        }
-        return 0;
-    }
-
-    public Node get(int index) {
-        if (index < 0 || index >= this.size()) return null;
+    Node<T> get(int index) {
+        if (index < 0 || index >= this.size()) return null;  // out of range
 
         int currentIndex = 0;
-        Node current = first;
-        while (current != null) {
-            if (currentIndex == index) return current;
-            current = current.next;
+        Node<T> currentNode = first;
+        while (currentIndex != index) {
+            currentNode = currentNode.next;
             currentIndex++;
         }
-        return current;
+        return currentNode;
     }
 
-    public Node remove(int index) {
-        Node current = null;
-        if (first != null && index < this.size() && index >= 0) {
-            //current = first;
-            Node prev = null;
-            if (index == 0) {
-                first = first.next;          //what to do, to delete Node completely?
-                return prev;
-            }
-            /*
-            int i = 0;
-            while (i != index) {
-                prev = current;
-                current = current.next;
-                i++;
-            }
-            prev.next = current.next;
-            */
-            prev = this.get(index-1);
-            current = prev.next;
-            prev.next = prev.next.next;
+    boolean add(Node<T> newNode) {
+        if (first == null) {  // if empty
+            first = newNode;
+        } else {
+            get(size()-1).next = newNode;   // add link to last node
         }
-        return current;
+        length++;
+        return true;
+    }
+
+    void add(int index, Node<T> newNode) {
+        if (index < 0 || index > size()) {
+            System.out.println(index + " is out of range");
+        } else {
+            if (index == size()) {
+                add(newNode);
+            } else {
+                if (index == 0) {
+                    newNode.next = first;
+                    first = newNode;
+                } else {
+                    Node<T> prevNode = get(index-1);
+                    newNode.next = prevNode.next;
+                    prevNode.next = newNode;
+                }
+                length++;
+            }
+        }
+    }
+
+    Node<T> remove(int index) {
+        Node<T> currentNode = this.get(index);
+        if (currentNode == null) {
+            System.out.println((index + " is out of range"));
+        } else {
+            if (index == 0) {                // delete first
+                currentNode = first;
+                first = first.next;          //how to delete node completely from a memory?
+            } else {
+                Node<T> prevNode = this.get(index - 1);
+                currentNode = prevNode.next;
+                prevNode.next = currentNode.next;
+            }
+            length--;
+        }
+        return currentNode;
     }
 
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
-        Node current = first;
-        while (current != null) {
-            result.append(current.toString()).append("\n");
-            current = current.next;
+        Node<T> currentNode = first;
+        while (currentNode != null) {
+            result.append(currentNode.toString()).append(" --> ");
+            currentNode = currentNode.next;
         }
+        result.append("null");
         return result.toString();
     }
-
-
-
 }
-
 
 /*Aufgabe 2: verkettete Liste
 Wie auch Arrays ist die verkettete Liste eine lineare Datenstruktur, allerdings besteht die verkettete

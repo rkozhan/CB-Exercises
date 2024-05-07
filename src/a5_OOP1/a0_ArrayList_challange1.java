@@ -30,3 +30,9 @@ public class a0_ArrayList_challange1 {
         }
     }
 }
+/*
+ArrayList Challenge 1
+Schreibe ein Programm das vom User int Werte als Input akzeptiert, solange der User nicht Q für “Quit” eingibt.
+Hat der User das Programm beendet sollen alle Zahlen, die in einer ArrayList gespeichert werden soll,
+ausgegeben werden und die höchste Zahl soll dabei markiert werden.
+ */
