@@ -21,7 +21,11 @@ public class A4_Personenvervaltung_V2 {
         linz.setPvName("PV LINZ");
         linz.createPerson("Mickey", "Mouse");
         linz.createPerson("Winnie", "Pooh");
-        System.out.println(linz);
+        System.out.println(linz);add
 
     }
 }
+
+//Aufgabe: Personenverwaltung_V2
+//Erweitere deine Personenverwaltung um Access Modifier und Datenkapselung
+
