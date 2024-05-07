@@ -8,69 +8,80 @@ class Person {
     enum Gender {male, female, diverse}
     private Gender gender;
     private Adress adress;
+    // =============================================== CONSTRUCTORS
 
+
+    public Person(String firstName, String lastName, LocalDate dateOfBirth, Person.Gender gender, int postalCode, String city, String street, int houseNumber) {
+        setFirstName(firstName);
+        setLastName(lastName);
+        setGender(gender);
+        setDateOfBirth(dateOfBirth);
+        setAdress(new Adress(postalCode, houseNumber, city, street));
+    }
+    public Person(String firstName, String lastName, LocalDate dateOfBirth, Person.Gender gender) {
+        setFirstName(firstName);
+        setLastName(lastName);
+        setGender(gender);
+        setDateOfBirth(dateOfBirth);
+    }
+    public Person(String firstName, String lastName) {
+        setFirstName(firstName);
+        setLastName(lastName);
+    }
+
+    private void validateName(String name, String fieldName) {
+        if (name == null || name.isEmpty()) throw new IllegalArgumentException(fieldName + " Name cannot be null or empty.");
+    }
+    private void validate(LocalDate dateOfBirth) {
+        LocalDate currentDate = LocalDate.now();
+        if (dateOfBirth == null || dateOfBirth.isAfter(currentDate)) throw new IllegalArgumentException("Date of birth cannot be null or in the future.");
+    }
+    private void validate(Person.Gender gender) {
+        if (gender == null) throw new IllegalArgumentException("Gender cannot be null.");
+    }
+
+
+    // ================================================== SETTERS
+    public void setFirstName(String firstName) {
+        validateName(firstName, "First");
+        this.firstName = firstName;
+    }
+    public void setLastName(String lastName) {
+        validateName(lastName, "Last");
+        this.lastName = lastName;
+
+    }
+    public void setDateOfBirth(LocalDate dateOfBirth) {
+        validate(dateOfBirth);
+        this.dateOfBirth = dateOfBirth;
+    }
+    public void setGender(Gender gender) {
+        validate(gender);
+        this.gender = gender;
+    }
+    public void setAdress(Adress adress) {
+        this.adress = adress;
+    }
+
+
+    // ============================== GETTERS
     public String getFirstName() {
         return firstName;
     }
-    public void setFirstName(String firstName) {
-
-        if (firstName != null && !firstName.isEmpty()) {
-            this.firstName = firstName;
-        } else {
-            throw new IllegalArgumentException("First name cannot be null or empty.");
-        }
-    }
-
     public String getLastName() {
         return lastName;
     }
-    public void setLastName(String lastName) {
-        if (lastName != null && !lastName.isEmpty()) {
-            this.lastName = lastName;
-        } else {
-            throw new IllegalArgumentException("Last name cannot be null or empty.");
-        }
-    }
-
     public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
-    public void setDateOfBirth(LocalDate dateOfBirth) {
-        LocalDate currentDate = LocalDate.now();
-        if (dateOfBirth != null && !dateOfBirth.isAfter(currentDate)) {
-            this.dateOfBirth = dateOfBirth;
-        } else {
-            throw new IllegalArgumentException("Date of birth cannot be null or in the future.");
-        }
-    }
-
     public Gender getGender() {
         return gender;
-    }
-    public void setGender(Gender gender) {
-        if (gender != null) {
-            this.gender = gender;
-        } else {
-            throw new IllegalArgumentException("Gender cannot be null.");
-        }
     }
 
     public Adress getAdress() {
         return adress;
     }
 
-    public void setAdress(int postalCode, String city, String street, int houseNumber) {
-        Adress newAddress = new Adress();
-        try {
-            newAddress.setPostalCode(postalCode);
-            newAddress.setCity(city);
-            newAddress.setStreet(street);
-            newAddress.setHouseNumber(houseNumber);
-            this.adress = newAddress;
-        } catch (IllegalArgumentException e) {
-            System.out.println("Failed to set address: " + e.getMessage());
-        }
-    }
 
     @Override
     public String toString() {

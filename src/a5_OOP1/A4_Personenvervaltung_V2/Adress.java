@@ -1,60 +1,63 @@
 package a5_OOP1.A4_Personenvervaltung_V2;
 
 import java.text.MessageFormat;
+import java.time.LocalDate;
 
 class Adress {
     private int postalCode, houseNumber;
     private String city, street;
-/*
+
     public Adress(int postalCode, int houseNumber, String city, String street) {
         setPostalCode(postalCode);
         setHouseNumber(houseNumber);
         setCity(city);
         setStreet(street);
-    }*/
+    }
+    // ================================================== VALIDATE Methods
+    private void validate(String string, String typeOf) {
+        if (string == null || string.isEmpty()) throw new IllegalArgumentException(typeOf + " cannot be null or empty.");
+    }
+    private void validate(int houseNumber) {
+        if (houseNumber < 1) throw new IllegalArgumentException("House number must be a non-zero positive integer.");
+    }
+    private void validateZipCode(int postalCode) {
+        if (String.valueOf(postalCode).length() != 4) throw new IllegalArgumentException("Postal code must contain 4 digits.");
+    }
 
+
+    // ================================================== SETTERS
+    public void setPostalCode(int postalCode) {
+        validateZipCode(postalCode);
+        this.postalCode = postalCode;
+    }
+    public void setHouseNumber(int houseNumber) {
+        validate(houseNumber);
+        this.houseNumber = houseNumber;
+    }
+    public void setCity(String city) {
+        validate(city, "city");
+        this.city = city;
+    }
+    public void setStreet(String street) {
+        validate(street, "street");
+        this.street = street;
+    }
+
+
+    // ============================== GETTERS
     public int getPostalCode() {
         return postalCode;
     }
-    public void setPostalCode(int postalCode) {
-        if (String.valueOf(postalCode).length() == 4) {
-            this.postalCode = postalCode;
-        } else {
-            throw new IllegalArgumentException("Postal code must contain 4 digits.");
-        }
-    }
-
     public int getHouseNumber() {
         return houseNumber;
-    }
-    public void setHouseNumber(int houseNumber) {
-        if (houseNumber >= 0) {
-            this.houseNumber = houseNumber;
-        } else {
-            throw new IllegalArgumentException("House number must be a non-zero positive integer.");
-        }
     }
     public String getCity() {
         return city;
     }
-    public void setCity(String city) {
-        if (city != null && !city.isEmpty()) {
-            this.city = city;
-        } else {
-            throw new IllegalArgumentException("City cannot be null or empty.");
-        }
-    }
-
     public String getStreet() {
         return street;
     }
-    public void setStreet(String street) {
-        if (street != null && !street.isEmpty()) {
-            this.street = street;
-        } else {
-            throw new IllegalArgumentException("Street cannot be null or empty.");
-        }
-    }
+
 
     @Override
     public String toString() {

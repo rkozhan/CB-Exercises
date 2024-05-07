@@ -9,7 +9,8 @@ public class A4_Personenvervaltung_V2 {
         codersBay.createPerson("Sam", "Smith", LocalDate.of(1950, 1, 22), Person.Gender.male, 124, "Berlin", "Rotestraße", 75);
 
         codersBay.createPerson("Ann", "Smith", LocalDate.of(2980, 1, 23), Person.Gender.female);
-        codersBay.createPerson("Bob", "Spencer");
+        codersBay.createPerson("Ann", "Smith", LocalDate.of(1980, 1, 23), null);
+        codersBay.createPerson("", "Spencer");
         System.out.println(codersBay);
 
         codersBay.deletePerson("Bob", "Smith");

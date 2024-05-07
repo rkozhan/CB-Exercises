@@ -1,53 +1,46 @@
 package a5_OOP1.A4_Personenvervaltung_V2;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 class PersonnelManagement {
-    private List<Person> personList;
+    private final List<Person> personList;
     private String pvName;
     PersonnelManagement() {
         this.personList = new ArrayList<>();
     }
 
     public void createPerson(String firstName, String lastName, LocalDate dateOfBirth, Person.Gender gender, int postalCode, String city, String street, int houseNumber) {
-        Person person = new Person();
         try {
-            person.setFirstName(firstName);
-            person.setLastName(lastName);
-            person.setDateOfBirth(dateOfBirth);
-            person.setGender(gender);
-            person.setAdress(postalCode, city, street, houseNumber);
+            Person person = new Person(firstName, lastName, dateOfBirth, gender, postalCode, city, street, houseNumber);
             add(person);
         } catch (IllegalArgumentException e) {
             System.err.println("Error creating person: " + e.getMessage());
         }
     }
-    public void createPerson(String firstName, String lastName, LocalDate dateOfBirth, Person.Gender gender) {
-        Person person = new Person();
 
+    public void createPerson(String firstName, String lastName, LocalDate dateOfBirth, Person.Gender gender) {
         try {
-            person.setFirstName(firstName);
-            person.setLastName(lastName);
-            person.setDateOfBirth(dateOfBirth);
-            person.setGender(gender);
+            Person person = new Person(firstName, lastName, dateOfBirth, gender);
             add(person);
         } catch (IllegalArgumentException e) {
             System.err.println("Error creating person: " + e.getMessage());
         }
     }
     public void createPerson(String firstName, String lastName) {
-        Person person = new Person();
+        //Person person = new Person();  //instead this -> constructor in "Person"
         try {
+            Person person = new Person(firstName, lastName);
+            /*
             person.setFirstName(firstName);
             person.setLastName(lastName);
+             */
             add(person);
         } catch (IllegalArgumentException e) {
             System.err.println("Error creating person: " + e.getMessage());
         }
     }
-    public void add (Person person) {
+    private void add (Person person) {
         personList.add(person);
         System.out.println("ADD to " + pvName + ": " + person.getFirstName() + " " + person.getLastName());
     }
