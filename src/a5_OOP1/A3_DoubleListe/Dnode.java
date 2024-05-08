@@ -1,9 +1,9 @@
 package a5_OOP1.A3_DoubleListe;
 
-class Dnode {
-    String value;
-    Dnode next, prev;
-    Dnode (String value) {
+class Dnode<T> {
+    T value;
+    Dnode<T> next, prev;
+    Dnode (T value) {
         this.value = value;
         this.prev = null;
         this.next = null;
@@ -11,6 +11,6 @@ class Dnode {
 
     @Override
     public String toString() {
-        return value;
+        return String.valueOf(value);
     }
 }

@@ -21,7 +21,7 @@ public class A4_Personenvervaltung_V2 {
         linz.setPvName("PV LINZ");
         linz.createPerson("Mickey", "Mouse");
         linz.createPerson("Winnie", "Pooh");
-        System.out.println(linz);add
+        System.out.println(linz);
 
     }
 }

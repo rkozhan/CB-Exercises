@@ -11,7 +11,7 @@ public class A2_VerketteListe {
         intList.add(1, new Node<> (2));
         System.out.println(intList);
 
-        intList.add(3,new Node<> (4));
+        intList.add(3,new Node<> (5));
         System.out.println(intList);
 
         System.out.println(intList.get(2));
