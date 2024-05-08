@@ -1,8 +1,28 @@
 package a6_OOP2.A1_Stack;
+
+import java.util.Arrays;
+
 public class A1_main {
     public static void main(String[] args) {
-        //Stack stack = new Stack;
+        Stack stack = new Stack();
+        stack.pop();
+        stack.peek();
 
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
+        stack.push(4);
+
+        System.out.println(stack);
+        System.out.println(stack.pop());
+        System.out.println(stack.peek());
+
+        System.out.println(stack);
+        System.out.println(Arrays.toString(stack.pop(-2)));
+
+        System.out.println(stack.size());
+        System.out.println(stack);
+        System.out.println(Arrays.toString(stack.pop(5)));
     }
 }
 

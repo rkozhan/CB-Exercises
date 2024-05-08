@@ -1,9 +1,9 @@
 package a5_OOP1.A3_DoubleListe;
 
-class Dnode<T> {
-    T value;
-    Dnode<T> next, prev;
-    Dnode (T value) {
+public class Dnode<T> {
+    public T value;
+    public Dnode<T> next, prev;
+    public Dnode(T value) {
         this.value = value;
         this.prev = null;
         this.next = null;

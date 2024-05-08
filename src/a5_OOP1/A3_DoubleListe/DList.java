@@ -1,12 +1,12 @@
 package a5_OOP1.A3_DoubleListe;
 public class DList<T> {
-    Dnode<T> first, last;
-    int length = 0;
-    int size() {
+    private Dnode<T> first, last;
+    public int length = 0;
+    public int size() {
         return length;
     }
 
-    Dnode<T> get(int index) {
+    public Dnode<T> get(int index) {
         if (index < 0 || index >= this.size()) return null;
         Dnode<T> currentNode = first;
         if (index < this.size()/2) {
@@ -26,7 +26,7 @@ public class DList<T> {
         return currentNode;
     }
 
-    boolean add(Dnode<T> newNode) {
+    public boolean add(Dnode<T> newNode) {
         if (first == null) {
             first = last = newNode;
         } else {
@@ -38,7 +38,7 @@ public class DList<T> {
         return true;
     }
 
-    void add(int index, Dnode<T> newNode) {
+    public void add(int index, Dnode<T> newNode) {
         if (index < 0 || index > size()) {
             System.out.println(index + " is out of range");
         } else {
@@ -61,7 +61,7 @@ public class DList<T> {
         }
     }
 
-    Dnode<T> remove(int index) {
+    public Dnode<T> remove(int index) {
         Dnode<T> currentNode = this.get(index);
         if (currentNode == null) {
             System.out.println(index + " is out of range");
