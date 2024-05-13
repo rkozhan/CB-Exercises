@@ -6,7 +6,7 @@ public class Stack {
     private final DList<Integer> stackList = new DList<>();
     public void push(int newElement) {  // fügt ein neues Element oben in den Stack ein
         Dnode<Integer> newNode = new Dnode<>(newElement);
-        stackList.add(newNode);
+        stackList.add(newNode); //add(newNode, size())
     }
     public int size() {                // gibt die Anzahl der Elemente im Stack zurück
         return stackList.size();
