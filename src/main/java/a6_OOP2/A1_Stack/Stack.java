@@ -1,4 +1,4 @@
-package a6_OOP2.A1_Stack;
+package main.java.a6_OOP2.A1_Stack;
 import a5_OOP1.A3_DoubleListe.DList;
 import a5_OOP1.A3_DoubleListe.Dnode;
 
@@ -18,6 +18,15 @@ public class Stack {
         return isEmpty() ? -1 : stackList.remove(0).value;
     }
     public int[] pop(int n) {// gibt die letzten n Elemente des Stacks zurück und entfernt diese vom Stack
+        if (n < 0) throw new IllegalArgumentException("Number of elements to pop must be non-negative.");
+        if (n > size()) throw new IllegalArgumentException("Number of elements to pop exceeds the size of the stack.");
+
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = pop();
+        }
+        return arr;
+        /*
         if (n < 0 || n > size()) System.err.println(n < 0 ? "Error: n < 0"
                                                             : "only "+ size() +" elements in a Stack");
         n = Math.min(n, size());
@@ -29,11 +38,12 @@ public class Stack {
             return arr;
         }
         return new int[0];
+        */
     }
 
     private boolean isEmpty() {     // Wird auf einen leeren Stack pop() oder peek() aufgerufen sollte eine Fehlermeldung ausgegeben werden.
         if (size() == 0) {
-            System.err.println("Stack is empty.");
+            System.out.println("Stack is empty.");
             return true;
         }
         return false;

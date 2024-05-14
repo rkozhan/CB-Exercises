@@ -1,4 +1,4 @@
-package a6_OOP2.A3_Fotografie;
+package main.java.a6_OOP2.A3_Fotografie;
 import java.text.MessageFormat;
 public class Lens {
     private int minFocalLength, maxFocalLength;

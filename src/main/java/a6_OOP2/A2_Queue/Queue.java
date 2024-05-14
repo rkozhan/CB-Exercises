@@ -1,4 +1,4 @@
-package a6_OOP2.A2_Queue;
+package main.java.a6_OOP2.A2_Queue;
 import a5_OOP1.A3_DoubleListe.DList;
 import a5_OOP1.A3_DoubleListe.Dnode;
 
@@ -9,10 +9,19 @@ public class Queue {
         Dnode<Integer> newNode = new Dnode<>(newElement);
         queueList.add(newNode);
     }
-    int dequeue() { // gibt das erste Elemente der Schlange zurück und entfernt dieses daraus
+    public int dequeue() { // gibt das erste Elemente der Schlange zurück und entfernt dieses daraus
         return isEmpty() ? -1 : queueList.remove(0).value;
     }
-    int[] dequeue(int n) {  // gibt die ersten n Elemente der Schlange zurück und entfernt diese daraus
+    public int[] dequeue(int n) {  // gibt die ersten n Elemente der Schlange zurück und entfernt diese daraus
+        if (n < 0) throw new IllegalArgumentException("Number of elements to dequeue must be non-negative.");
+        if (n > size()) throw new IllegalArgumentException("Number of elements to dequeue exceeds the size of the queue.");
+
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = dequeue();
+        }
+        return arr;
+            /*
         if (n < 0 || n > size()) System.err.println(n < 0 ? "Error: n < 0"
                 : "only "+ size() +" elements in a Stack");
         n = Math.min(n, size());
@@ -24,8 +33,9 @@ public class Queue {
             return arr;
         }
         return new int[0];
+         */
     }
-    public int size() {                // gibt die Anzahl der Elemente im Stack zurück
+    public int size() {
         return queueList.size();
     }  // gibt die Anzahl der Elemente in der Queue zurück
 

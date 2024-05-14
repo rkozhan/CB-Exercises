@@ -1,4 +1,4 @@
-package a6_OOP2.A3_Fotografie;
+package main.java.a6_OOP2.A3_Fotografie;
 public class A3_main {
     public static void main(String[] args) {
         Lens lens1 = new Lens(24, 70);

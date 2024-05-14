@@ -1,4 +1,4 @@
-package a6_OOP2.A2_Queue;
+package main.java.a6_OOP2.A2_Queue;
 
 import java.util.Arrays;
 
@@ -19,6 +19,6 @@ public class A2_main {
 
         System.out.println(Arrays.toString(queue.dequeue(2)));
 
-        System.out.println(Arrays.toString(queue.dequeue(4)));
+        //System.out.println(Arrays.toString(queue.dequeue(4)));
     }
 }

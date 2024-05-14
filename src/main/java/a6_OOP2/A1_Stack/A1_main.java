@@ -1,4 +1,4 @@
-package a6_OOP2.A1_Stack;
+package main.java.a6_OOP2.A1_Stack;
 
 import java.util.Arrays;
 
@@ -18,11 +18,11 @@ public class A1_main {
         System.out.println(stack.peek());
 
         System.out.println(stack);
-        System.out.println(Arrays.toString(stack.pop(-2)));
+        //System.out.println(Arrays.toString(stack.pop(-2)));
 
         System.out.println(stack.size());
         System.out.println(stack);
-        System.out.println(Arrays.toString(stack.pop(5)));
+        //System.out.println(Arrays.toString(stack.pop(5)));
     }
 }
 
