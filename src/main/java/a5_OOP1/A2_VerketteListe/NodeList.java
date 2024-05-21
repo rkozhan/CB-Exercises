@@ -1,5 +1,5 @@
-package a5_OOP1.A2_VerketteListe;
-import java.util.LinkedList;
+package main.java.a5_OOP1.A2_VerketteListe;
+
 public class NodeList<T> {
     Node<T> first;
     int length = 0;

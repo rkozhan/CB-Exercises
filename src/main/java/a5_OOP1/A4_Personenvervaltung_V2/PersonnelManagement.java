@@ -1,13 +1,15 @@
-package a5_OOP1.A4_Personenvervaltung_V2;
+package main.java.a5_OOP1.A4_Personenvervaltung_V2;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
-class PersonnelManagement {
+public class PersonnelManagement {
     private final List<Person> personList;
     private String pvName;
-    PersonnelManagement() {
+    public PersonnelManagement(String pvName) {
         this.personList = new ArrayList<>();
+        setPvName(pvName);
     }
 
     public void createPerson(String firstName, String lastName, LocalDate dateOfBirth, Person.Gender gender, int postalCode, String city, String street, int houseNumber) {
@@ -15,7 +17,7 @@ class PersonnelManagement {
             Person person = new Person(firstName, lastName, dateOfBirth, gender, postalCode, city, street, houseNumber);
             add(person);
         } catch (IllegalArgumentException e) {
-            System.err.println("Error creating person: " + e.getMessage());
+            showErrorMessage(e.getMessage());
         }
     }
 
@@ -24,41 +26,36 @@ class PersonnelManagement {
             Person person = new Person(firstName, lastName, dateOfBirth, gender);
             add(person);
         } catch (IllegalArgumentException e) {
-            System.err.println("Error creating person: " + e.getMessage());
+            showErrorMessage(e.getMessage());
         }
     }
     public void createPerson(String firstName, String lastName) {
-        //Person person = new Person();  //instead this -> constructor in "Person"
         try {
             Person person = new Person(firstName, lastName);
-            /*
-            person.setFirstName(firstName);
-            person.setLastName(lastName);
-             */
             add(person);
         } catch (IllegalArgumentException e) {
-            System.err.println("Error creating person: " + e.getMessage());
+            showErrorMessage(e.getMessage());
         }
+    }
+    private void showErrorMessage (String msg) {
+        System.out.println("ERROR CREATING PESRSON!  >>  " + msg);
     }
     private void add (Person person) {
         personList.add(person);
-        System.out.println("ADD to " + pvName + ": " + person.getFirstName() + " " + person.getLastName());
+        System.out.println("ADD to " + pvName + ": " + person.getFirstName() + " " + person.getLastName() + "\n");
     }
 
     public void deletePerson(String firstName, String lastName) {
         Person personToDelete = null;
         for (Person person : personList) {
-            if (person.getFirstName().equals(firstName) && person.getLastName().equals(lastName)) {
+            if (person.getFirstName().equalsIgnoreCase(firstName) && person.getLastName().equalsIgnoreCase(lastName)) {
                 personToDelete = person;
                 break;
             }
         }
-        String res = " not found.";
-        if (personToDelete != null) {
-            personList.remove(personToDelete);
-            res = " deleted successfully.";
-        }
-        System.out.println("DELETE from " + pvName + ": " + firstName + " " + lastName + res);
+        if (personToDelete != null) personList.remove(personToDelete);
+
+        System.out.printf("DELETE: %s %s %s%n", firstName, lastName, personToDelete != null ? " deleted successfully." : " not found.");
     }
 
     public String getPvName() {
@@ -70,6 +67,29 @@ class PersonnelManagement {
 
     public List<Person> getPersonList() {
         return personList;
+    }
+
+
+
+    // ===============================================FOR EXCEPTIONS EXERCISE
+    public List<Person> searchPersonsByName (String firstName) {
+        List<Person> persons = personList.stream()
+                        .filter(person -> person.getFirstName().equalsIgnoreCase(firstName))
+                        .toList();
+        if (persons.isEmpty()) throw new NullPointerException("No persons found with the first name: " + firstName);
+        return persons;
+    }
+
+    public void showSearchResults (String firstName) {
+        System.out.println("SEARCH RESULT: " + firstName);
+        try {
+            searchPersonsByName(firstName)
+                    .forEach(person ->
+                            System.out.println(person.getFirstName() + " " +person.getLastName()));
+        } catch (NullPointerException e) {
+            System.out.println(e.getMessage());
+        }
+        System.out.println();
     }
 
     public String toString() {

@@ -1,4 +1,4 @@
-package a5_OOP1.A3_DoubleListe;
+package main.java.a5_OOP1.A3_DoubleListe;
 
 public class Dnode<T> {
     public T value;

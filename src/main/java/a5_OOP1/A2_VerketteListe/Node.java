@@ -1,4 +1,4 @@
-package a5_OOP1.A2_VerketteListe;
+package main.java.a5_OOP1.A2_VerketteListe;
 class Node<T> {
     T value;
     Node<T> next;

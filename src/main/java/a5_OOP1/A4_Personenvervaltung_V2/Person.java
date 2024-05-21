@@ -1,11 +1,12 @@
-package a5_OOP1.A4_Personenvervaltung_V2;
+package main.java.a5_OOP1.A4_Personenvervaltung_V2;
+
 import java.text.MessageFormat;
 import java.time.LocalDate;
 
-class Person {
+public class Person {
     private String firstName, lastName;
     private LocalDate dateOfBirth;
-    enum Gender {male, female, diverse}
+    public enum Gender {MALE, FEMALE, DIVERSE}
     private Gender gender;
     private Adress adress;
     // =============================================== CONSTRUCTORS
@@ -28,18 +29,21 @@ class Person {
         setFirstName(firstName);
         setLastName(lastName);
     }
-
-    private void validateName(String name, String fieldName) {
+// VALIDATE
+    public void validateName(String name, String fieldName) {
         if (name == null || name.isEmpty()) throw new IllegalArgumentException(fieldName + " Name cannot be null or empty.");
+
+        // ===============================================FOR EXCEPTIONS EXERCISE
+        if (name.matches(".*\\d.*")) throw new InvalidPersonNameException(fieldName + " Name cannot contain digits: " + name);
     }
-    private void validate(LocalDate dateOfBirth) {
+
+    public void validate(LocalDate dateOfBirth) {
         LocalDate currentDate = LocalDate.now();
         if (dateOfBirth == null || dateOfBirth.isAfter(currentDate)) throw new IllegalArgumentException("Date of birth cannot be null or in the future.");
     }
-    private void validate(Person.Gender gender) {
+    public void validate(Person.Gender gender) {
         if (gender == null) throw new IllegalArgumentException("Gender cannot be null.");
     }
-
 
     // ================================================== SETTERS
     public void setFirstName(String firstName) {
@@ -81,7 +85,6 @@ class Person {
     public Adress getAdress() {
         return adress;
     }
-
 
     @Override
     public String toString() {

@@ -1,4 +1,4 @@
-package a5_OOP1.A1_Personenvervaltung_V1;
+package main.java.a5_OOP1.A1_Personenvervaltung_V1;
 import java.text.MessageFormat;
 
 class Person {

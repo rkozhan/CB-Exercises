@@ -1,7 +1,6 @@
-package a5_OOP1.A4_Personenvervaltung_V2;
+package main.java.a5_OOP1.A4_Personenvervaltung_V2;
 
 import java.text.MessageFormat;
-import java.time.LocalDate;
 
 class Adress {
     private int postalCode, houseNumber;
@@ -61,7 +60,7 @@ class Adress {
 
     @Override
     public String toString() {
-        return MessageFormat.format(">> Adress: {0}, {1}, {2} {3}",
+        return MessageFormat.format(" -   Adress: {0}, {1}, {2} {3}",
                 String.valueOf(postalCode), city, street, houseNumber);
     }
 }

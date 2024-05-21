@@ -1,4 +1,4 @@
-package a5_OOP1;
+package main.java.a5_OOP1;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class a0_ArrayList_challange1 {

@@ -1,6 +1,6 @@
 package main.java.a6_OOP2.A2_Queue;
-import a5_OOP1.A3_DoubleListe.DList;
-import a5_OOP1.A3_DoubleListe.Dnode;
+import main.java.a5_OOP1.A3_DoubleListe.DList;
+import main.java.a5_OOP1.A3_DoubleListe.Dnode;
 
 public class Queue {
     private final DList<Integer> queueList = new DList<>();

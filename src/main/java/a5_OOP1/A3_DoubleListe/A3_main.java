@@ -1,4 +1,4 @@
-package a5_OOP1.A3_DoubleListe;
+package main.java.a5_OOP1.A3_DoubleListe;
 public class A3_main {
     public static void main(String[] args) {
         DList<String> fruits = new DList<>();
