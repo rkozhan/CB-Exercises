@@ -1,9 +1,8 @@
 package main.java.a9_file_IO_and_Exceptions.A2_file_I_O;
-
 public class A2_main {
     public static void main(String[] args) {
         Game game = new Game();
-
+        game.startGame();
     }
 }
 
