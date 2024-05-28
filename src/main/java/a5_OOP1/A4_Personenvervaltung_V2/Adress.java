@@ -2,7 +2,7 @@ package main.java.a5_OOP1.A4_Personenvervaltung_V2;
 
 import java.text.MessageFormat;
 
-class Adress {
+public class Adress {
     private int postalCode, houseNumber;
     private String city, street;
 

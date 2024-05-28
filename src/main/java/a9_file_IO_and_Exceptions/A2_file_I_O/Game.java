@@ -117,7 +117,6 @@ public class Game {
 
         File libraryFile = new File(url);
 
-
         // Using BufferedReader to handle BOM
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(libraryFile), StandardCharsets.UTF_8))) {
             // Skip BOM if present

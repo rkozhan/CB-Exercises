@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class PersonnelManagement {
-    private final List<Person> personList;
+    protected final List<Person> personList;
     private String pvName;
     public PersonnelManagement(String pvName) {
         this.personList = new ArrayList<>();
@@ -38,14 +38,14 @@ public class PersonnelManagement {
         }
     }
     private void showErrorMessage (String msg) {
-        System.out.println("ERROR CREATING PESRSON!  >>  " + msg);
+        System.out.println("ERROR CREATING PERSON!  >>  " + msg);
     }
-    private void add (Person person) {
+    protected void add (Person person) {
         personList.add(person);
-        System.out.println("ADD to " + pvName + ": " + person.getFirstName() + " " + person.getLastName() + "\n");
+        System.out.println("ADD to " + pvName + ": " + person.getFirstName() + " " + person.getLastName());
     }
 
-    public void deletePerson(String firstName, String lastName) {
+    public Person deletePerson(String firstName, String lastName) {
         Person personToDelete = null;
         for (Person person : personList) {
             if (person.getFirstName().equalsIgnoreCase(firstName) && person.getLastName().equalsIgnoreCase(lastName)) {
@@ -56,6 +56,7 @@ public class PersonnelManagement {
         if (personToDelete != null) personList.remove(personToDelete);
 
         System.out.printf("DELETE: %s %s %s%n", firstName, lastName, personToDelete != null ? " deleted successfully." : " not found.");
+        return personToDelete;
     }
 
     public String getPvName() {
